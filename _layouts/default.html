@@ -8,8 +8,9 @@
     <nav><ul>
     {% assign sorted_pages = site.pages | where: "dir", "/" | sort: "name" -%}
     {% for p in sorted_pages -%}
-    {% if p.name == page.name -%}
+    {% if p.url == page.url -%}
     <li>{{ p.title }} (page actuelle)</li>
+    <!-- {{ page.name }} -->
     {% else -%}
     <li><a href="{{ p.url }}">{{ p.title }}</a></li>
     {% endif -%}
