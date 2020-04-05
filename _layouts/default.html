@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <nav><ul>
+    {% assign sorted_pages = site.pages | where: "dir", "/" | sort: "name" -%}
+    {% for p in sorted_pages -%}
+    {% if p.name == page.name -%}
+    <li>{{ p.title }} (page actuelle)</li>
+    {% else -%}
+    <li><a href="{{ p.url }}">{{ p.title }}</a></li>
+    {% endif -%}
+    {% endfor -%}
+    </ul></nav>
+    <h1>{{ page.title }}</h1>
+    <section>{{ content }}</section>
+    <footer>{% include footer.html %}</footer>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<h2>{{ page.dir | split:"/" | last }} - vimplates</h2>
+
+<p>{{ content }}</p>
+
+<ul>
+{% assign here_plates = site.static_files | where_exp:"p", "p.path contains page.dir" -%}
+{% for plate in here_plates -%}
+<li><a href="{{ plate.path }}">{{ plate.name }}</a> - {{ plate.modifiedtime }}</li>
+{% endfor -%}
+</ul>
